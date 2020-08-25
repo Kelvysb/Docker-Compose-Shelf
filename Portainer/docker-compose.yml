@@ -1,0 +1,20 @@
+version: "3"
+services:
+    portainer:
+        container_name: portainer
+        image: portainer/portainer
+        ports:
+            - "9000:9000"
+        command: --admin-password '$$2y$$05$$7.78kgHMmLAdR6aqes2hceME6VpAVC.Mv0VCnZeyXgj88kEHQYsye'
+        networks:
+            - local
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer-data:/data
+
+networks:
+    local:
+        driver: bridge
+    
+volumes:
+    portainer-data:
